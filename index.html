@@ -12,26 +12,30 @@
         <h1>Кодирование</h1>
         <input type="text" id="encoding">
         <div>
-            <input type="checkbox" class="encoding-checkbox" data-number="0">
-            <span>Шифр замены</span>
+            <input type="checkbox" class="encoding-checkbox" id="changing" data-number="0">
+            <label for="changing">Шифр замены</label>
         </div>
         <div>
-            <input type="checkbox" class="encoding-checkbox" data-number="1">
-            <span>Шифр перестановки</span>
+            <input type="checkbox" class="encoding-checkbox" id="replacing" data-number="1">
+            <label for="replacing">Шифр перестановки</label>
+
+            <input type="text" class="replacing-encoding-key" id="replacing-encoding-key">
+            <label for="replacing-encoding-key">Ключ для шифра перестановки (вводить через пробел)</label>
         </div>
         <div>
-            <input type="checkbox" class="encoding-checkbox" data-number="2">
-            <span>Шифр гаммирование</span>
+            <input type="checkbox" class="encoding-checkbox" id="gamm" data-number="2">
+            <label for="gamm">Шифр гаммирование</label>
         </div>
         <div>
-            <input type="checkbox" class="encoding-checkbox" data-number="3">
-            <span>Монофоническая замена</span>
+            <input type="checkbox" class="encoding-checkbox" id="mono" data-number="3">
+            <label for="mono">Монофоническая замена</label>
         </div>
 
         <button id="encoding-submit">Начать шифрование</button>
 
-        <div id="encoding-result"></div>
+        <div id="encoding-result" style="white-space: pre"></div>
     </div>
+
     <hr>
 
     <div>
@@ -42,8 +46,10 @@
             <span>Шифр замены</span>
         </div>
         <div>
-            <input type="checkbox" class="decoding-checkbox" data-number="1">
-            <span>Шифр перестановки</span>
+            <input type="checkbox" class="decoding-checkbox" id="decoding-replacing" data-number="1">
+            <label for="decoding-replacing">Шифр перестановки</label>
+            <input type="text" class="replacing-decoding-key" id="replacing-decoding-key">
+            <label for="replacing-decoding-key">Ключ для дешифрования перестановки (вводить через пробел)</label>
         </div>
         <div>
             <input type="checkbox" class="decoding-checkbox" data-number="2">
@@ -56,7 +62,16 @@
 
         <button id="decoding-submit">Начать дешифрование</button>
 
-        <div id="decoding-result"></div>
+        <div id="decoding-result" style="white-space: pre"></div>
+    </div>
+
+    <hr>
+
+    <div>
+        <h1>Аналитическое шифрование</h1>
+        <input type="text" id="analytic-input">
+        <button id="analytic-submit">Начать шифрование</button>
+        <div id="analytic-output" style="white-space: pre"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
@@ -67,6 +82,7 @@
     <script src="classes/replacing.js"></script>
     <script src="classes/gamm.js"></script>
     <script src="classes/monophonic.js"></script>
+    <script src="classes/analytic.js"></script>
     <script src="script.js"></script>
 </body>
 

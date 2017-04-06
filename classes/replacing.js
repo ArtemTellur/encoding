@@ -1,53 +1,30 @@
-// (вотпримершифравертикальнойперестановки)
+// (перестановка, 8 3 9 4 10 11 0 6 7 2 5 1)
 var Replacing = function Changing() {
-    this.sourceWord = 'вотпримершифравертикальнойперестановки';
-    this.key = '4036152';
-    this.rowCount;
-    this.table = [];
+    this.sourceWord = 'перестановка';
+    this.key = '8 3 9 4 10 11 0 6 7 2 5 1';
 }
 
-Replacing.prototype.fillTheGaps = function (source) {
-    var difference = (parseInt(source.length / this.key.length) + 1) * this.key.length - source.length,
-        extendedSource = source;
-    for (var i = 0; i < difference; i += 1) {
-        extendedSource += ' ';
-    }
-    return extendedSource;
-}
-
-Replacing.prototype.replacingEncoding = function (source) {
+Replacing.prototype.replacingEncoding = function (source, key) {
     var counter = 0,
-        encoded = '';
+        encoded = '',
+        parsedKey = key.split(' ');
 
-    source = this.fillTheGaps(source);
-
-    this.rowCount = parseInt(source.length / this.key.length);
-
-    for (var i = 0; i < this.rowCount; i += 1) {
-        this.table[i] = [];
-        for (var j = 0; j < this.key.length; j += 1) {
-            this.table[i][j] = source[counter];
-            counter++;
-        }
-    }
-
-    for (var i = 0; i < this.key.length; i += 1) {
-        for (var j = 0; j < this.rowCount; j += 1) {
-            encoded += this.table[j][parseInt(this.key.indexOf(i))];
-        }
-    }
+    parsedKey.forEach(function(char) {
+        encoded += source[parseInt(char)];
+    }, this);
 
     return encoded;
 }
 
-Replacing.prototype.replacingDecoding = function (source) {
-    var decoded = '';
-    source = this.fillTheGaps(source);
-    this.rowCount = parseInt(source.length / this.key.length);
-    for (var i = 0; i < this.rowCount; i += 1) {
-        for (var j = 0; j < this.key.length; j += 1) {
-            decoded += source[parseInt(this.key[j]) * this.rowCount + i];
-        }
+Replacing.prototype.replacingDecoding = function (source, key) {
+    var decoded = [],
+        parsedKey = key.split(' ');
+
+    for (var i = 0; i < source.length; i++) {
+        decoded[parseInt(parsedKey[i])] = source[i];
     }
+
+    decoded = decoded.join('');
+
     return decoded;
 }

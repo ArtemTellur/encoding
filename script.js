@@ -26,7 +26,8 @@ $(function () {
                     encoded = changingInstance.changingEncoding(encoded);
                     break;
                 case '1':
-                    encoded = replacingInstance.replacingEncoding(encoded);
+                    var key = $('#replacing-encoding-key').val();
+                    encoded = replacingInstance.replacingEncoding(encoded, key);
                     break;
                 case '2':
                     encoded = gamm.gammEncoding(encoded);
@@ -70,7 +71,8 @@ $(function () {
                     decoded = changingInstance.changingDecoding(decoded);
                     break;
                 case '1':
-                    decoded = replacingInstance.replacingDecoding(decoded);
+                    var key = $('#replacing-decoding-key').val();
+                    decoded = replacingInstance.replacingDecoding(decoded, key);
                     break;
                 case '2':
                     decoded = gamm.gammDecoding(decoded);
@@ -84,4 +86,16 @@ $(function () {
         $('#decoding-result').text(decoded);
     });
 
+});
+
+$(function() {
+    var decoded,
+        analytic = new Analytic();
+
+    $('#analytic-submit').on('click', function() {
+        var sourceWord = $('#analytic-input').val();
+        
+        decoded = analytic.analyticEncoding(sourceWord);
+        $('#analytic-output').text(decoded);
+    })
 });
