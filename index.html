@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div>
+        <h1>Кодирование</h1>
+        <input type="text" id="encoding">
+        <div>
+            <input type="checkbox" class="encoding-checkbox" data-number="0">
+            <span>Шифр замены</span>
+        </div>
+        <div>
+            <input type="checkbox" class="encoding-checkbox" data-number="1">
+            <span>Шифр перестановки</span>
+        </div>
+        <div>
+            <input type="checkbox" class="encoding-checkbox" data-number="2">
+            <span>Шифр гаммирование</span>
+        </div>
+        <div>
+            <input type="checkbox" class="encoding-checkbox" data-number="3">
+            <span>Монофоническая замена</span>
+        </div>
+
+        <button id="encoding-submit">Начать шифрование</button>
+
+        <div id="encoding-result"></div>
+    </div>
+    <hr>
+
+    <div>
+        <h1>Декодирование</h1>
+        <input type="text" id="decoding">
+        <div>
+            <input type="checkbox" class="decoding-checkbox" data-number="0">
+            <span>Шифр замены</span>
+        </div>
+        <div>
+            <input type="checkbox" class="decoding-checkbox" data-number="1">
+            <span>Шифр перестановки</span>
+        </div>
+        <div>
+            <input type="checkbox" class="decoding-checkbox" data-number="2">
+            <span>Шифр гаммирование</span>
+        </div>
+        <div>
+            <input type="checkbox" class="decoding-checkbox" data-number="3">
+            <span>Монофоническая замена</span>
+        </div>
+
+        <button id="decoding-submit">Начать дешифрование</button>
+
+        <div id="decoding-result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+
+    </script>
+
+    <script src="classes/changing.js"></script>
+    <script src="classes/replacing.js"></script>
+    <script src="classes/gamm.js"></script>
+    <script src="classes/monophonic.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
